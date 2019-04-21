@@ -29,6 +29,7 @@ class BlogPostTemplate extends React.Component {
         >
           {post.frontmatter.date}
         </p>
+        {/* <img src={post.frontmatter.cover}></img> */}
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
         <hr
           style={{
@@ -78,12 +79,12 @@ export const pageQuery = graphql`
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
-      excerpt(pruneLength: 160)
+      excerpt(pruneLength: 200)
       html
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
-        description
+        cover
       }
     }
   }

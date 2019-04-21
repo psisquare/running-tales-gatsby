@@ -21,7 +21,7 @@ function Bio() {
           <div
             style={{
               display: `flex`,
-              marginBottom: rhythm(2.5),
+              marginBottom: rhythm(1),
             }}
           >
             <Image
@@ -37,13 +37,12 @@ function Bio() {
                 borderRadius: `50%`,
               }}
             />
-            <p>
-              Written by <strong>{author}</strong> who lives and works in San
-              Francisco building useful things.
-              {` `}
-              <a href={`https://twitter.com/${social.twitter}`}>
-                You should follow him on Twitter
-              </a>
+            <p 
+              style={{
+                fontStyle: `italic`
+              }}>
+              @running_tales
+              
             </p>
           </div>
         )

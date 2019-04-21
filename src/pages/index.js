@@ -16,7 +16,7 @@ class BlogIndex extends React.Component {
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
           title="All posts"
-          keywords={[`blog`, `gatsby`, `javascript`, `react`]}
+          keywords={[`blog`, `trail`, `trailrunning`, `running`, `hokaoneone`, `ultrarunning`]}
         />
         <Bio />
         {posts.map(({ node }) => {
@@ -32,7 +32,17 @@ class BlogIndex extends React.Component {
                   {title}
                 </Link>
               </h3>
-              <small>{node.frontmatter.date}</small>
+              <small>{node.frontmatter.date} - </small>
+              <small style={{
+                color: 'grey'
+              }}>{node.timeToRead} min read</small>
+              <Link
+                to={node.fields.slug}
+                style={{ boxShadow: `none` }}
+                >
+                <img src={node.frontmatter.cover || null} alt={node.frontmatter.title}></img>
+              </Link>
+              
               <p
                 dangerouslySetInnerHTML={{
                   __html: node.frontmatter.description || node.excerpt,
@@ -62,10 +72,11 @@ export const pageQuery = graphql`
           fields {
             slug
           }
+          timeToRead
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title
-            description
+            cover
           }
         }
       }
